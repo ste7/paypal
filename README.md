@@ -4,7 +4,7 @@ Paypal payments without redirecting to paypal site done with [PayPal-node-SDK](h
 #### Download and start server
 
 ```
-git clone
+git clone https://github.com/ste7/paypal.git
 cd paypal
 npm start
 🚀 http://localhost:8000
