@@ -1,0 +1,15 @@
+.book {
+    width: 130px;
+    border: 1px darkgray solid;
+    padding: 10px;
+}
+
+p {
+    margin: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #6f7575;
+}
+
+span {
+    color: #454949;
+}

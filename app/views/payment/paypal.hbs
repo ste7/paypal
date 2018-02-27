@@ -1,0 +1,44 @@
+<img class="book" src="https://www.thebookrocket.com/static/img/bluebooks.png">
+<p>product: <span><input type="hidden" id="product" value="Book">Book</span></p>
+<p>price: <span><input type="hidden" id="price" value="50.00">50.00 $</span></p>
+
+
+<div id="paypal-button"></div>
+
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<script>
+    var CREATE_PAYMENT_URL  = 'http://localhost:8080/paypal/create-payment';
+
+
+    paypal.Button.render({
+        env: 'sandbox',
+        commit: true, // Show a 'Pay Now' button
+
+        payment: function() {
+            return paypal.request({
+                method: 'post',
+                url: CREATE_PAYMENT_URL,
+                json: {
+                    product: $('#product').val(),
+                    price: $('#price').val()
+                }
+            }).then(function(data) {
+                return data.id;
+            });
+        },
+
+        onAuthorize: function(data) {
+            return paypal.request({
+                method: 'post',
+                url: data.returnUrl,
+                paymentID: data.paymentID,
+                payerID:   data.payerID
+            }).then(function() {
+                console.log('payment complete')
+            });
+        }
+
+    }, '#paypal-button');
+</script>
