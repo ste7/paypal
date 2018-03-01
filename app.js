@@ -25,17 +25,3 @@ const routes = require('./app/routes/routes');
 app.use(routes);
 
 app.listen(8080);
-
-/*
-
-## payments with paypal popup window - without redirecting to paypal site.
-
-paypal payments with paypal-rest-sdk
-
-setup and example usage
-
-git clone
-cd paypal
-npm start
-
- */
